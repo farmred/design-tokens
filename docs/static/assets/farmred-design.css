@@ -1,0 +1,74 @@
+/* Utils - might move to postcss utils? */
+/**
+  Mixin for setting responsive breakpoints
+  brought over from: https://github.com/papercss/papercss/blob/af918f03138e7fbedc42983020717d1dcac73fbd/src/core/_mixins.scss
+  @param string | integer
+  @default null
+*/
+/* Layout styling */
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+  width: 100%;
+}
+@media only screen and (max-width: 992px) {
+  .container {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.container.container-xs {
+  max-width: 480px;
+}
+
+.container.container-sm {
+  max-width: 768px;
+}
+
+.container.container-md {
+  max-width: 992px;
+}
+
+.container.container-lg {
+  max-width: 1200px;
+}
+
+.section {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  word-wrap: break-word;
+  /*
+  &::after {
+    @include hr-after;
+  } */
+}
+
+hr {
+  border: 0;
+}
+hr::after {
+  top: -0.75rem;
+}
+
+.col-fill {
+  flex: 1 1 0;
+  width: auto;
+}
+
+.align-top {
+  align-self: flex-start;
+}
+
+.align-middle {
+  align-self: center;
+}
+
+.align-bottom {
+  align-self: flex-end;
+}

@@ -1,0 +1,58 @@
+{
+    "name": "design-tokens",
+    "version": "0.0.1",
+    "description": "Design tokens for farm.red projects",
+    "main": "dist/farmred-design.css",
+    "author": "driedtoast",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/farmredstudios/design-tokens.git"
+    },
+    "bugs": {
+        "url": "https://github.com/farmredstudios/design-tokens/issues"
+    },
+    "keywords": [
+        "farmredstudios",
+        "css",
+        "farmred",
+        "design-system"
+    ],
+    "engines": {
+        "node": ">=10"
+    },
+    "scripts": {
+        "generate": "node ./scripts/generate.js",
+        "build:css": "node ./scripts/build.js",
+        "clean:all": "npm run clean && rm -rf node_modules; npm install",
+        "build": "npm run generate && npm run build:css && npm run hugo:build",
+        "clean": "rm -rf src/brands/* &&  rm -rf dist && rm -rf public",
+        "hugo:build": "hugo -D --source=docs",
+        "hugo:serve": "hugo server --source=docs --disableFastRender",
+        "lint": "npm run stylelint",
+        "start": "npm run hugo:serve",
+        "stylelint": "stylelint src/**/*.scss"
+    },
+    "devDependencies": {
+        "style-dictionary": "2.10.1",
+        "postcss": "^8.2.9",
+        "write": "^2.0.0",
+        "pre-commit": "^1.2.2",
+        "stylelint": "^13.7.2",
+        "stylelint-config-sass-guidelines": "^7.1.0",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-order": "^4.1.0",
+        "stylelint-scss": "^3.18.0",
+        "cssnano": "^4.1.10",
+        "hugo-bin": "^0.70.0",
+        "chalk": "^4.1.0",
+        "sass": "^1.32.8"
+    },
+    "files": [
+        "dist"
+    ],
+    "pre-commit": [
+        "stylelint"
+    ],
+    "dependencies": {}
+}

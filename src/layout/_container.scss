@@ -1,0 +1,56 @@
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+  width: 100%;
+  @include resp(medium) {
+    width: 85%;
+  }
+  @include resp(xsmall) {
+    width: 90%;
+  }
+}
+
+.container {
+  &.container-xs {
+    max-width: $xsmall-screen;
+  }
+}
+
+.container {
+  &.container-sm {
+    max-width: $small-screen;
+  }
+}
+
+.container {
+  &.container-md {
+    max-width: $medium-screen;
+  }
+}
+
+.container {
+  &.container-lg {
+    max-width: $large-screen;
+  }
+}
+
+.section {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  word-wrap: break-word;
+
+  /*
+  &::after {
+    @include hr-after;
+  } */
+}
+
+hr {
+  border: 0;
+
+  &::after {
+    // @include hr-after;
+    top: -0.75rem;
+  }
+}

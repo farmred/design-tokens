@@ -1,0 +1,13 @@
+{
+    "font": {
+        "family": {
+            "headers": {
+                "value": "Montserrat",
+                "group": "Typography"
+            },
+            "base": {
+                "value": "{font.platform.system.value}"
+            }
+        }
+    }
+}

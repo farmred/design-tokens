@@ -1,0 +1,9 @@
+<% _.each(allProperties, function(prop) {
+%>
+<% if (prop.group) { %>
+/**
+ * @tokens <%=prop.group %>
+ * @presenter <%=prop.group %>
+ */<% } %>
+$<%= prop.name %>: <%= prop.value %>;<% if (prop.comment) { %> // <%= prop.comment %><% } %>
+<% }); %>
