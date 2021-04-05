@@ -7,10 +7,10 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/farmredstudios/design-tokens.git"
+        "url": "git+https://github.com/farmred/design-tokens.git"
     },
     "bugs": {
-        "url": "https://github.com/farmredstudios/design-tokens/issues"
+        "url": "https://github.com/farmred/design-tokens/issues"
     },
     "keywords": [
         "farmredstudios",
@@ -23,9 +23,9 @@
     },
     "scripts": {
         "generate": "node ./scripts/generate.js",
-        "build:css": "node ./scripts/build.js",
+        "build:css": "npm run generate && node ./scripts/build.js",
         "clean:all": "npm run clean && rm -rf node_modules; npm install",
-        "build": "npm run generate && npm run build:css && npm run hugo:build",
+        "build": "npm run build:css && npm run hugo:build",
         "clean": "rm -rf src/brands/* &&  rm -rf dist && rm -rf public",
         "hugo:build": "hugo -D --source=docs",
         "hugo:serve": "hugo server --source=docs --disableFastRender",
