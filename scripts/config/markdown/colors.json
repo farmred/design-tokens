@@ -1,0 +1,21 @@
+{
+    "platforms": {
+        "markdown/colors": {
+            "transformGroup": "tokens-colors",
+            <% if (hasbrand) { %>
+            "buildPath": "docs/content/colors/<%=brand%>/",
+            <%
+            } else { %>    
+            "buildPath": "docs/content/colors/",            
+            <%
+            } %>
+            "files": [
+                {
+                    "destination": "index.md",
+                    "format": "custom/markdown/colors",
+                    "filter": "color-filter"
+                }
+            ]
+        }
+    }
+}

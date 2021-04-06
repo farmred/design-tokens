@@ -7,7 +7,11 @@
                 {
                     "destination": "_<%= (hasbrand) ? brand : 'global' %>.scss",
                     "format": "<%= (hasbrand) ? 'custom/css/variables' : 'css/variables' %>",
-                    "selector": "<%= (hasbrand) ? '.'+brand  : ':root' %>"
+                    "selector": "<%= (hasbrand) ? '.'+brand  : ':root' %>",
+                    "options": {
+                        "outputReferences": true
+                    }
+
                 }
             ]
         }

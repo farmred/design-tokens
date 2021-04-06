@@ -59,6 +59,9 @@ $button-border-radius: 4px;
 $button-text-size: 1;
 
 
+$font-platform-system: Tahoma, Arial, 'Helvetica Neue', sans;
+
+
 /**
  * @tokens Typography
  * @presenter Typography
@@ -67,9 +70,6 @@ $font-family-headers: Montserrat;
 
 
 $font-family-base: Tahoma, Arial, 'Helvetica Neue', sans;
-
-
-$font-platform-system: Tahoma, Arial, 'Helvetica Neue', sans;
 
 
 $size-font-small: 0.75; // the small size of the font

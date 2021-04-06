@@ -22,6 +22,12 @@ module.exports = {
             // to see the pre-defined "scss" transformation use: console.log(StyleDictionaryPackage.transformGroup['scss']);
             transforms: ["name/cti/kebab", "time/seconds", "size/px", "color/css"]
         });
+
+        StyleDictionary.registerTransformGroup({
+            name: 'tokens-colors',
+            // to see the pre-defined "scss" transformation use: console.log(StyleDictionaryPackage.transformGroup['scss']);
+            transforms: ["attribute/cti", "name/cti/kebab","color/css"]
+        });
     }
 
 };

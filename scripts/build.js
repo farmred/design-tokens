@@ -9,17 +9,18 @@ const cssnano = require('cssnano');
 const chalk = require('chalk');
 const autoprefixer = require('autoprefixer');
 const { constant } = require('lodash');
+const utils = require('./utils');
 
 function log(...args) {
     return console.log('📦', chalk.green(...args));
 }
 
-async function build() {
-    const name = 'farmred-design';
-    const entrypoint = path.resolve(__dirname, '../src/index.scss');
+async function build(name, entryname) {
+    
+    const entrypoint = path.resolve(__dirname, '../src/' + entryname+'.scss');
     const cssDocsPath = path.resolve(__dirname, '../docs/static/assets/'+name+'.css');
 
-    log('Starting CSS build...');
+    log('Starting ' +name+ ' CSS build...');
     log('Cleaning "dist/, docs/static/assets/' + name +'.css" folder...');
 
     rimraf.sync('dist', { disableGlob: true });
@@ -51,4 +52,15 @@ async function build() {
     log('Build done!');
 }
 
-build();
+
+build("farmred-design", "index");
+build("farmred-design-docs", "index-docs");
+
+const brandDir = require('path').resolve(__dirname, "../tokens/brands");
+const brands = utils.getDirectories(brandDir);
+
+brands.map(function(brand) {
+    build(`${brand}-vars`, `variables/_${brand}`);
+});
+
+// TODO print out css link header in docs with the gnerated files?

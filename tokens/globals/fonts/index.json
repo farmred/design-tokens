@@ -1,5 +1,10 @@
 {
     "font": {
+        "platform": {
+            "system": {
+                "value": "Tahoma, Arial, 'Helvetica Neue', sans"
+            }
+        },
         "family": {
             "headers": {
                 "value": "Montserrat",

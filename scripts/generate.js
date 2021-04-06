@@ -4,6 +4,7 @@ const utils = require('./utils');
 const { request } = require('http');
 const _ = require('lodash');
 
+const filters = require('./dictionary/filters');
 const formats = require('./dictionary/formats'); 
 const transforms = require('./dictionary/transforms');
 const groups = require('./dictionary/groups');
@@ -43,7 +44,7 @@ function getComponentStyleDictionaryConfig(brand, platform) {
 }
 
 
-// if you want to see the available pre-defined formats, transforms and transform groups uncomment this
+filters.registerFilters();
 formats.registerFormats();
 transforms.registerTransforms();
 groups.registerTransformGroups();
@@ -53,7 +54,7 @@ console.log('Build started...');
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT BRANDS AND PLATFORMS
 const brandDir = require('path').resolve(__dirname, "../tokens/brands");
 const brands = utils.getDirectories(brandDir);
-const supportedPlatforms = ['web']; // TODO // ['web', 'ios', 'android']
+const supportedPlatforms = ['web', 'markdown']; // TODO // ['web', 'ios', 'android']
 
 
 brands.map(function (brand) {

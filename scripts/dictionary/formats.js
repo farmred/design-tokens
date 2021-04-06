@@ -38,9 +38,41 @@ module.exports = {
             },
         });
 
+        // TODO look into this https://github.com/amzn/style-dictionary/issues/261
+        // https://github.com/amzn/style-dictionary/tree/main/examples/advanced/component-cti
+        // https://github.com/dbanksdesign/sd-theme-example
+        StyleDictionary.registerFormat({
+            name: 'css/components',
+            formatter: function (dictionary, config) {
+                return Object.keys(dictionary.properties).map(function (key3) {
+
+                    // Outputs component properties
+                    if (key3 === 'component') {
+                        return Object.keys(dictionary.properties.component).map(function (key) {
+                            return `--component-${key}: {\n` +
+                                Object.keys(dictionary.properties.component[key]).map(function (key2) {
+                                    let prop = dictionary.properties.component[key][key2];
+                                    return `\t${key2}: ${prop.value};`;
+                                }).join('\n') +
+                                '\n}\n'
+                        }).join('\n');
+
+                        // Outputs token properties
+                    } else {
+                        return variablesWithPrefix(' --', dictionary.allProperties) + '\n';
+                    }
+                }).join('\n');
+            }
+        });
+
         StyleDictionary.registerFormat({
             name: 'custom/format/scss',
             formatter: _.template(fs.readFileSync(__dirname + '/../templates/web-scss.template'))
+        });
+
+        StyleDictionary.registerFormat({
+            name: 'custom/markdown/colors',
+            formatter: _.template(fs.readFileSync(__dirname + '/../templates/markdown-color.template'))
         });
 
         StyleDictionary.registerFormat({
