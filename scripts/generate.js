@@ -1,10 +1,16 @@
 const StyleDictionaryPackage = require('style-dictionary');
 const fs = require('fs');
+const utils = require('./utils');
+const { request } = require('http');
 const _ = require('lodash');
 
-// HAVE THE STYLE DICTIONARY CONFIG DYNAMICALLY GENERATED
+const formats = require('./dictionary/formats'); 
+const transforms = require('./dictionary/transforms');
+const groups = require('./dictionary/groups');
+const config = require('./config/config');
 
-function getStyleDictionaryConfig(brand, platform) {
+
+function getComponentStyleDictionaryConfig(brand, platform) {
     return {
         "source": [
             `tokens/brands/${brand}/*.json`,
@@ -31,43 +37,6 @@ function getStyleDictionaryConfig(brand, platform) {
                         "format": "javascript/es6"
                     }
                 ]
-            },
-            "styleguide": {
-                "transformGroup": "styleguide",
-                "buildPath": `dist/design-tokens/`,
-                "prefix": "token",
-                "files": [
-                    {
-                        "destination": `${platform}_${brand}.json`,
-                        "format": "json/flat"
-                    },
-                    {
-                        "destination": `${platform}_${brand}.scss`,
-                        "format": "scss/variables"
-                    }
-                ]
-            },
-            "android": {
-                "transformGroup": "android",
-                "buildPath": `dist/android/${brand}/`,
-                "files": [{
-                    "destination": "tokens.colors.xml",
-                    "format": "android/colors"
-                }, {
-                    "destination": "tokens.dimens.xml",
-                    "format": "android/dimens"
-                }, {
-                    "destination": "tokens.font_dimens.xml",
-                    "format": "android/fontDimens"
-                }]
-            },
-            "ios": {
-                "transformGroup": "ios",
-                "buildPath": `dist/ios/${brand}/`,
-                "files": [{
-                    "destination": "tokens.h",
-                    "format": "ios/macros"
-                }]
             }
         }
     };
@@ -75,94 +44,55 @@ function getStyleDictionaryConfig(brand, platform) {
 
 
 // if you want to see the available pre-defined formats, transforms and transform groups uncomment this
-// console.log(StyleDictionaryPackage);
-
-StyleDictionaryPackage.registerTransform({
-    name: 'size/pxToPt',
-    type: 'value',
-    matcher: function (prop) {
-        return prop.value.match(/^[\d\.]+px$/);
-    },
-    transformer: function (prop) {
-        return prop.value.replace(/px$/, 'pt');
-    }
-});
-
-StyleDictionaryPackage.registerTransform({
-    name: 'size/pxToDp',
-    type: 'value',
-    matcher: function (prop) {
-        return prop.value.match(/^[\d.]+px$/);
-    },
-    transformer: function (prop) {
-        return prop.value.replace(/px$/, 'dp');
-    }
-});
-
-StyleDictionaryPackage.registerTransformGroup({
-    name: 'tokens-js',
-    transforms: ["name/cti/constant", "size/px", "color/hex"]
-});
-
-StyleDictionaryPackage.registerFormat({
-    name: 'json/flat',
-    formatter: function (dictionary) {
-        return JSON.stringify(dictionary.allProperties, null, 2);
-    }
-});
-
-
-StyleDictionaryPackage.registerFormat({
-    name: 'custom/format/scss',
-    formatter: _.template(fs.readFileSync(__dirname + '/templates/web-scss.template'))
-});
-
-StyleDictionaryPackage.registerTransformGroup({
-    name: 'styleguide',
-    transforms: ["attribute/cti", "name/cti/kebab", "size/px", "color/css"]
-});
-
-
-StyleDictionaryPackage.registerTransformGroup({
-    name: 'tokens-json',
-    transforms: ["attribute/cti", "name/cti/kebab", "size/px", "color/css"]
-});
-
-StyleDictionaryPackage.registerTransformGroup({
-    name: 'tokens-scss',
-    // to see the pre-defined "scss" transformation use: console.log(StyleDictionaryPackage.transformGroup['scss']);
-    transforms: ["name/cti/kebab", "time/seconds", "size/px", "color/css"]
-});
+formats.registerFormats();
+transforms.registerTransforms();
+groups.registerTransformGroups();
 
 console.log('Build started...');
 
-// PROCESS THE DESIGN TOKENS FOR THE DIFFEREN BRANDS AND PLATFORMS
+// PROCESS THE DESIGN TOKENS FOR THE DIFFERENT BRANDS AND PLATFORMS
+const brandDir = require('path').resolve(__dirname, "../tokens/brands");
+const brands = utils.getDirectories(brandDir);
+const supportedPlatforms = ['web']; // TODO // ['web', 'ios', 'android']
 
-// ['web', 'ios', 'android'].map(function (platform) {
 
-// TODO load brands from a config file
-// TODO debug brands
-// TODO include file in brands dir
-// TODO build loop through brands as well, shared script?
-
-['studio', 'comics', 'blogs'].map(function (brand) {
-    ['web'].map(function (platform) {
+brands.map(function (brand) {
+    supportedPlatforms.map(function (platform) {
 
         console.log('\n==============================================');
         console.log(`\nProcessing: [${platform}] [${brand}]`);
 
-        const StyleDictionary = StyleDictionaryPackage.extend(getStyleDictionaryConfig(brand, platform));
-        if (platform === 'web') {
-            StyleDictionary.buildPlatform('web/js');
-            StyleDictionary.buildPlatform('web/scss');
-        } else {
-            StyleDictionary.buildPlatform(platform);
-        }
-        StyleDictionary.buildPlatform('styleguide');
+        let params = { brand: brand };
+        let configObj = config.platformConfig(platform, params);
+        const StyleDictionary = StyleDictionaryPackage.extend(configObj);
+        config.platforms(platform).map(function (platformName) {
+            StyleDictionary.buildPlatform(platformName);
+        });
         console.log('\nEnd processing');
 
     })
-})
+});
+
+// global styles
+supportedPlatforms.map(function (platform) {
+
+    console.log('\n==============================================');
+    console.log(`\nProcessing Globals: [${platform}]`);
+
+    let configObj = config.platformConfig(platform, {});
+    const StyleDictionary = StyleDictionaryPackage.extend(configObj);
+    config.platforms(platform).map(function (platformName) {
+        StyleDictionary.buildPlatform(platformName);
+    });
+    console.log('\nEnd processing');
+});
+
+const componentsDir = require('path').resolve(__dirname, "../tokens/globals/components");
+const components = utils.getFileAndDirNames(componentsDir);
+console.log(" process these with a group? ");
+console.log(components);
+// TODO generate filter settings for config
+// TODO generate components to src/components without brand? or put brand within component
 
 console.log('\n==============================================');
 console.log('\nBuild completed!');

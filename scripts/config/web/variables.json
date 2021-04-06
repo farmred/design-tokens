@@ -1,0 +1,15 @@
+{
+    "platforms": {
+        "web/variables": {
+            "transformGroup": "web",
+            "buildPath": "src/variables/",
+            "files": [
+                {
+                    "destination": "_<%= (hasbrand) ? brand : 'global' %>.scss",
+                    "format": "<%= (hasbrand) ? 'custom/css/variables' : 'css/variables' %>",
+                    "selector": "<%= (hasbrand) ? '.'+brand  : ':root' %>"
+                }
+            ]
+        }
+    }
+}

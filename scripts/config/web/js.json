@@ -1,0 +1,14 @@
+{
+    "platforms": {
+        "web/js": {
+            "transformGroup": "tokens-js",
+                "buildPath": "dist/js/<%= (hasbrand) ? brand : 'global' %>/",
+                    "files": [
+                        {
+                            "destination": "tokens.es6.js",
+                            "format": "javascript/es6"
+                        }
+                    ]
+        }
+    }
+}

@@ -25,10 +25,10 @@
             }
         },
         "primary": {
-            "value": "{color.brand.primary.value}"
+            "value": "{color.base.gray.light.value}"
         },
         "secondary": {
-            "value": "{color.brand.secondary.value}"
+            "value": "{color.base.gray.dark.value}"
         },
         "action": {
             "primary": {

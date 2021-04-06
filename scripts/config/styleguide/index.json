@@ -1,0 +1,19 @@
+{ 
+    "platforms": { 
+        "styleguide": {
+            "transformGroup": "styleguide",
+            "buildPath": "dist/design-tokens/",
+            "prefix": "token",
+            "files": [
+                {
+                    "destination": "<%=platform %>_<%=brand%>.json",
+                    "format": "json/flat"
+                },
+                {
+                    "destination": "<%=platform %>_<%=brand%>.scss",
+                    "format": "scss/variables"
+                }
+            ]
+        }
+    }
+}

@@ -8,3 +8,32 @@
     <h1>{{ .Site.Title }}</h1>
     <h3>{{ .Site.Params.info.description }}</h3>
 </div>
+
+{{ range .Site.Sections }}
+<div class='section'>
+    <!-- <h3 class='sidebar-title' style='text-align:center'>
+        <a href='/docs'>Documentation</a>
+    </h3> -->
+        {{ range .Sections }}
+    <div class='row'>
+        <label for="collapsible-{{ .Title | urlize }}">{{ .Title }}</label>
+            <div >
+                <ul>
+                    {{ range .Pages }}
+                    <li>
+                        <a href='{{ .Permalink | relURL }}'>{{ .Title }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>        
+    </div>    
+        {{ end }}
+    <ul>
+        {{ range .Pages }}
+        <li>
+            <a href='{{ .Permalink | relURL }}'>{{ .Title }}</a>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+{{ end }}

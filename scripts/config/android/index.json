@@ -1,0 +1,22 @@
+{
+    "platforms": {
+        "android": {
+            "transformGroup": "android",
+            "buildPath": "dist/android/<%= brand ? brand : 'global' %>",
+            "files": [
+                {
+                    "destination": "tokens.colors.xml",
+                    "format": "android/colors"
+                },
+                {
+                    "destination": "tokens.dimens.xml",
+                    "format": "android/dimens"
+                },
+                {
+                    "destination": "tokens.font_dimens.xml",
+                    "format": "android/fontDimens"
+                }
+            ]
+        }
+    }
+}

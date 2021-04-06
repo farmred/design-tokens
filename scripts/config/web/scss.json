@@ -1,0 +1,18 @@
+{
+    "platforms": {
+        "web/scss": {
+            "transformGroup": "tokens-scss",
+            <% if (hasbrand) { %>
+            "buildPath": "src/brands/<%=brand%>/",
+            <% } else { %>    
+            "buildPath": "src/globals/",            
+            <% } %>
+            "files": [
+            {
+                "destination": "_tokens.scss",
+                "format": "custom/format/scss"
+            }
+            ]
+        }   
+    }
+}

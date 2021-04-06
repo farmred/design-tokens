@@ -1,0 +1,14 @@
+{
+    "platforms": {
+        "ios": {
+            "transformGroup": "ios",
+            "buildPath": "dist/ios/<%= brand ? brand : 'global' %>",
+            "files": [
+                {
+                    "destination": "tokens.h",
+                    "format": "ios/macros"
+                }
+            ]
+        }
+    }
+}

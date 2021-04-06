@@ -1,0 +1,28 @@
+{{ partial "header" . }}
+
+<div class='section'>
+    <h2>{{ .Title }}</h2>
+
+    {{ .Content }}
+
+    <div class='row flex-spaces'>
+
+        {{ range .Sections }}
+        <div>
+            <p>{{ .Title }}</p>
+            <ul>
+                    {{ range .Pages }}
+                    <li><a  href='{{ .Permalink | relURL }}'>{{- .Title -}}</a></li>
+                    {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+
+        {{ range .Pages }}
+        {{ .Render "li" }}
+        {{ end }}
+
+    </div>
+</div>
+
+{{ partial "footer" . }}
