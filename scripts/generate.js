@@ -10,40 +10,6 @@ const transforms = require('./dictionary/transforms');
 const groups = require('./dictionary/groups');
 const config = require('./config/config');
 
-
-function getComponentStyleDictionaryConfig(brand, platform) {
-    return {
-        "source": [
-            `tokens/brands/${brand}/*.json`,
-            "tokens/globals/**/*.json",
-            `tokens/platforms/${platform}/*.json`
-        ],
-        "platforms": {
-            "web/scss": {
-                "transformGroup": "tokens-scss",
-                "buildPath": `src/brands/${brand}/`,
-                "files": [
-                    {
-                        "destination": "tokens.scss",
-                        "format": "custom/format/scss"
-                    }
-                ]
-            },
-            "web/js": {
-                "transformGroup": "tokens-js",
-                "buildPath": `dist/js/${brand}/`,
-                "files": [
-                    {
-                        "destination": "tokens.es6.js",
-                        "format": "javascript/es6"
-                    }
-                ]
-            }
-        }
-    };
-}
-
-
 filters.registerFilters();
 formats.registerFormats();
 transforms.registerTransforms();

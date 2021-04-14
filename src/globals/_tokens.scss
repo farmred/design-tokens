@@ -1,56 +1,77 @@
 
+$color-base-purple-light: #F22E8A;
 
-/**
- * @tokens Color
- * @presenter Color
- */
+
+$color-base-purple-medium: #A62D7B;
+
+
+$color-base-purple-dark: #73265E;
+
+
+$color-base-blue-light: #A0D9D9;
+
+
+$color-base-blue-medium: #49868C;
+
+
+$color-base-blue-dark: #252D59;
+
+
+$color-base-green-light: #d8d890;
+
+
+$color-base-green-medium: #BABF15;
+
+
+$color-base-green-dark: #467302;
+
+
+$color-base-red-light: #f0c078;
+
+
+$color-base-red-medium: #D97904;
+
+
+$color-base-red-dark: #BF0404;
+
+
+$color-base-gray-light: #d8d8d8;
+
+
+$color-base-gray-medium: #A6A6A6;
+
+
+$color-base-gray-dark: #262621;
+
+
 $color-base-black: #000000;
 
 
-/**
- * @tokens Color
- * @presenter Color
- */
-$color-base-gray-light: #CCCCCC;
+$color-primary: #d8d8d8;
 
 
-$color-base-gray-medium: #999999;
+$color-secondary: #262621;
 
 
-$color-base-gray-dark: #111111;
+$color-action-primary: #d8d8d8;
 
 
-$color-base-red: #FF0000;
+$color-action-secondary: #262621;
 
 
-$color-base-green: #00FF00;
-
-
-$color-primary: #CCCCCC;
-
-
-$color-secondary: #111111;
-
-
-$color-action-primary: #CCCCCC;
-
-
-$color-action-secondary: #111111;
-
-
-$color-action-tertiary: #999999;
+$color-action-tertiary: #A6A6A6;
 
 
 $color-font-base: #000000;
 
 
-$color-font-primary: #CCCCCC;
+$color-font-primary: #d8d8d8;
 
 
-$color-font-secondary: #111111;
+$color-font-secondary: #262621;
 
 
-$color-font-tertiary: #CCCCCC;
+$color-font-tertiary: #d8d8d8;
 
 
 $button-border-radius: 4px;
@@ -62,10 +83,6 @@ $button-text-size: 1;
 $font-platform-system: Tahoma, Arial, 'Helvetica Neue', sans;
 
 
-/**
- * @tokens Typography
- * @presenter Typography
- */
 $font-family-headers: Montserrat;
 
 
@@ -82,3 +99,4 @@ $size-font-large: 2; // the large size of the font
 
 
 $size-font-base: 1; // the base size of the font
+

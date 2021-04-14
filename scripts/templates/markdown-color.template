@@ -5,7 +5,7 @@ description: Generated colors
 
 <% _.each(allProperties, function(prop) { %>
 
- {{< swatch color="<%= prop.name %>" value="<%= prop.value %>" comment="<%= (prop.comment) ? prop.comment : ''%>" >}}
+ {{< swatch color="background-<%= prop.name %>" value="<%= prop.value %>" comment="<%= (prop.comment) ? prop.comment : ''%>" >}}
 
 <% }); %>
 

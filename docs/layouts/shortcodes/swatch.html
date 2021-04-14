@@ -1,6 +1,10 @@
 {{ if .IsNamedParams }}
 <div class="{{.Get "color" }} palette-box">
-    {{.Get "value" }}
+
     {{.Get "comment" }}
+    <div class="swatch-name">
+        {{.Get "color" }}: 
+        {{.Get "value" }}        
+    </div>
 </div>
 {{ end }}

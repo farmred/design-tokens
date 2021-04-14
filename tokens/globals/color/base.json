@@ -1,28 +1,81 @@
 {
     "color": {
         "base": {
-            "black": {
-                "value": "#000000",
-                "group":"Color"
-            },
-            "gray": {
+            "purple": {
                 "light": {
-                    "value": "#CCCCCC",
+                    "value": "#F22E8A",
                     "group": "Color"
                 },
                 "medium": {
-                    "value": "#999999"
+                    "value": "#A62D7B",
+                    "group": "Color"
                 },
                 "dark": {
-                    "value": "#111111"
+                    "value": "#73265E",
+                    "group": "Color"
+                }
+            },
+            "blue": {
+                "light": {
+                    "value": "#A0D9D9",
+                    "group": "Color"
+                },
+                "medium": {
+                    "value": "#49868C",
+                    "group": "Color"
+                },
+                "dark": {
+                    "value": "#252D59",
+                    "group": "Color"
+                }
+            },
+            "green": {
+                "light": {
+                    "value": "#d8d890",
+                    "group": "Color"
+                },
+                "medium": {
+                    "value": "#BABF15",
+                    "group": "Color"
+                },
+                "dark": {
+                    "value": "#467302",
+                    "group": "Color"
                 }
             },
             "red": {
-                "value": "#FF0000"
+                "light": { 
+                    "value": "#f0c078",
+                    "group": "Color"
+                },
+                "medium": {
+                    "value": "#D97904",
+                    "group": "Color"
+                },
+                "dark": {
+                    "value": "#BF0404",
+                    "group": "Color"
+                }
             },
-            "green": {
-                "value": "#00FF00"
+            "gray": {
+                "light": { 
+                    "value": "#d8d8d8",
+                    "group": "Color"
+                },
+                "medium": {
+                    "value": "#A6A6A6",
+                    "group": "Color"
+                },
+                "dark": {
+                    "value": "#262621",
+                    "group": "Color"
+                }
+            },
+            "black": {
+                "value": "#000000",
+                "group":"Color"
             }
+            
         },
         "primary": {
             "value": "{color.base.gray.light.value}"

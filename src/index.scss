@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
+@import 'globals/tokens';
+
 /* Utils - might move to postcss utils? */
 @import 'utils/config';
 @import 'utils/mixins';

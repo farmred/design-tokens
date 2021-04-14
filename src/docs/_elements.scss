@@ -1,0 +1,15 @@
+.palette-box {
+    //width: 100px;
+    height: 130px;
+    display: inline-flex;
+    border: 1px solid #c0c0c0;
+    margin: 8px;
+}
+
+.swatch-name {
+    color: black;
+    background-color: white;
+    height: 30px;
+    text-align: center;
+    width: 100%;
+}
