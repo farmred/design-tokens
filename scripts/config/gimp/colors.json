@@ -1,0 +1,21 @@
+{
+    "platforms": {
+        "gimp/colors": {
+            "transformGroup": "palette-colors",
+            <% if (hasbrand) { %>
+            "buildPath": "docs/palettes/colors/<%=brand%>/",
+            <%
+            } else { %>    
+            "buildPath": "docs/palettes/colors/",            
+            <%
+            } %>
+            "files": [
+                {
+                    "destination": "palette.gpl",
+                    "format": "custom/palette/colors",
+                    "filter": "color-filter"
+                }
+            ]
+        }
+    }
+}

@@ -46,7 +46,8 @@
         "cssnano": "^4.1.10",
         "hugo-bin": "^0.70.0",
         "chalk": "^4.1.0",
-        "sass": "^1.32.8"
+        "sass": "^1.32.8",
+        "tinycolor2": "^1.4.2"
     },
     "files": [
         "dist"

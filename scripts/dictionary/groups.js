@@ -25,8 +25,12 @@ module.exports = {
 
         StyleDictionary.registerTransformGroup({
             name: 'tokens-colors',
-            // to see the pre-defined "scss" transformation use: console.log(StyleDictionaryPackage.transformGroup['scss']);
             transforms: ["attribute/cti", "name/cti/kebab","color/css"]
+        });
+
+        StyleDictionary.registerTransformGroup({
+            name: 'palette-colors',
+            transforms: ["attribute/cti", "name/cti/kebab", "color/palette"]
         });
     }
 

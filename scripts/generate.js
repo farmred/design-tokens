@@ -20,7 +20,7 @@ console.log('Build started...');
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT BRANDS AND PLATFORMS
 const brandDir = require('path').resolve(__dirname, "../tokens/brands");
 const brands = utils.getDirectories(brandDir);
-const supportedPlatforms = ['web', 'markdown']; // TODO // ['web', 'ios', 'android']
+const supportedPlatforms = ['web', 'markdown', 'gimp']; // TODO // ['web', 'ios', 'android']
 
 
 brands.map(function (brand) {

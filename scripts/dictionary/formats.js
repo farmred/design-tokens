@@ -1,6 +1,7 @@
 const fs = require('fs');
 const StyleDictionary = require('style-dictionary');
 const _ = require('lodash');
+const Color = require('tinycolor2');
 
 module.exports = {
 
@@ -73,6 +74,14 @@ module.exports = {
         StyleDictionary.registerFormat({
             name: 'custom/markdown/colors',
             formatter: _.template(fs.readFileSync(__dirname + '/../templates/markdown-color.template'))
+        });
+
+        StyleDictionary.registerFormat({
+            name: 'custom/palette/colors',
+            formatter: function (dictionary) {
+                _.templateSettings.imports.tinycolor = Color;
+                return _.template(fs.readFileSync(__dirname + '/../templates/palette.template'))(dictionary);
+            }
         });
 
         StyleDictionary.registerFormat({

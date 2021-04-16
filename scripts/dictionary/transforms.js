@@ -1,4 +1,5 @@
 const StyleDictionary = require('style-dictionary');
+const Color = require('tinycolor2');
 
 module.exports = {
 
@@ -23,6 +24,18 @@ module.exports = {
             },
             transformer: function (prop) {
                 return prop.value.replace(/px$/, 'dp');
+            }
+        });
+
+        StyleDictionary.registerTransform( {
+            name: 'color/palette',
+            type: 'value',
+            matcher: function(prop) { 
+                return prop.attributes.category === 'color';
+            },
+            transformer: function (prop) {
+                let color = Color(prop.original.value).toRgb();
+                return color.r + ' ' + color.g + ' ' + color.b;
             }
         });
     }

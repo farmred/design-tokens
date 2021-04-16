@@ -13,6 +13,56 @@
             "base": {
                 "value": "{font.platform.system.value}"
             }
+        },
+        "opensans": {
+            "name": {
+                "value": "Open Sans"
+            },
+            "ttf": {
+                "value": "assets/fonts/OpenSans-Regular.ttf"
+            }
+        },
+
+        "chunkfive": {
+            "name": {
+                "value": "ChunkFive"
+            },
+            "ttf": {
+                "value": "assets/fonts/Chunk-Five-Print.ttf"                        
+            }
+        },
+        "marker": {
+            "name": {
+                "value": "PermanentMarker"
+            },
+            "ttf": {
+                "value": "assets/fonts/PermanentMarker-Regular.ttf"
+            }
+        },
+        "raleway": {
+            "name": {
+                "value": "Raleway"
+            },
+            "ttf": {
+                "value": "assets/fonts/Raleway-Regular.ttf"
+            }
+        },
+        "roboto": {
+            "name": {
+                "value": "Roboto"
+            },
+            "ttf": {
+                "value": "assets/fonts/Roboto-Re,gular.ttf"
+            }
+        },
+
+        "staatliches": {
+            "name": {
+                "value": "Staatliches"
+            },
+            "ttf": {
+                "value": "assets/fonts/Staatliches-Regular.ttf"
+            }
         }
     }
 }

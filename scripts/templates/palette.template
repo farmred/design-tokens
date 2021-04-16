@@ -1,0 +1,8 @@
+GIMP Palette
+Name: Farm red
+Columns: 8
+# farm-red-palette.gpl
+
+<% _.each(allProperties, function(prop) { %><% _.each(tinycolor('rgb('+_.join(_.split(prop.value),',')+')').monochromatic(), function(color) { %>
+<%= color.toRgb().r %> <%= color.toRgb().g %> <%= color.toRgb().b %>   <%= prop.name + '-' + color.toHex()  %>
+<% }); %><% }); %>
